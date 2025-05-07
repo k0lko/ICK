@@ -36,9 +36,13 @@ export class AnimeComponent implements OnInit{
   }
 
   filterAnimeByRating(rating: number) {
-    this.animeService.filterAnimeByRating(rating).subscribe({
-      next: (filteredAnimes) => this.animes = filteredAnimes,
-      error: (err) => console.log(err)
+    this.animeService.getAnimeList().subscribe({
+      next: (animes) => {
+      this.animes = (animes as any[]).filter(anime => {
+        const animeRating= this.ratings.get(anime.id);
+        return animeRating != null && animeRating <= rating;
+      });
+    }
     })
   }
 

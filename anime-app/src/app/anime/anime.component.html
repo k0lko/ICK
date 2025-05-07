@@ -3,7 +3,7 @@
     <h3 class="text-body-emphasis text-center">Lista anime</h3>
     <p>Filtry:</p>
     <div class="mb-3 col-3 form-floating">
-      <input type="number" min="1" max="10" name="rating" [(ngModel)]="ratingFilter" (input)="filterAnimeByRating(ratingFilter)" class="form-control" id="rating">
+      <input type="number" min="0" max="10" step="0.1" name="rating" [(ngModel)]="ratingFilter" (input)="filterAnimeByRating(ratingFilter)" class="form-control" id="rating">
       <label for="rating">Ocena</label>
     </div>
     <table class="table">
