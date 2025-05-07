@@ -42,14 +42,4 @@ public class AnimeService {
         return restTemplate.getForObject(apiUrl, String.class);
     }
 
-    public List<Anime> filterAnimeByRating(double minRating) {
-        return repository.findByRatingGreaterThanEqual(minRating);
-    }
-
-    public double getAverageRating() {
-        return repository.findAll().stream()
-                .mapToDouble(Anime::getRating)
-                .average()
-                .orElse(0.0);
-    }
 }

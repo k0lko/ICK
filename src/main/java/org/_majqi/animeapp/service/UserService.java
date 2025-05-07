@@ -6,10 +6,6 @@ import org._majqi.animeapp.repository.AnimeRepository;
 import org._majqi.animeapp.repository.UserRepository;
 import org._majqi.animeapp.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -23,12 +19,12 @@ public class UserService {
     @Autowired
     private AnimeRepository animeRepository;
 
-    @Autowired
-    private PasswordEncoder passwordEncoder;
+//    @Autowired
+//    private PasswordEncoder passwordEncoder;
 
     // Rejestracja użytkownika
     public User registerUser(User user) {
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
+//        user.setPassword(passwordEncoder.encode(user.getPassword()));
         return userRepository.save(user);
     }
 

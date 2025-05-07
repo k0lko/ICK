@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.OptionalDouble;
 
 @Service
 public class ReviewService {
@@ -25,4 +26,11 @@ public class ReviewService {
     public List<Review> getReviewsByAnimeId(Long animeId) {
         return reviewRepository.findByAnimeId(animeId);
     }
+
+    public OptionalDouble getAnimeAverageRating(Long animeId) {
+        return reviewRepository.findByAnimeId(animeId).stream()
+                .mapToDouble(Review::getRating)
+                .average();
+    }
+
 }

@@ -7,7 +7,7 @@ public class Review {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String content;
-    private int rating;
+    private double rating;
 
     @ManyToOne
     @JoinColumn(name = "anime_id")
@@ -29,11 +29,11 @@ public class Review {
         this.content = content;
     }
 
-    public int getRating() {
+    public double getRating() {
         return rating;
     }
 
-    public void setRating(int rating) {
+    public void setRating(double rating) {
         this.rating = rating;
     }
 

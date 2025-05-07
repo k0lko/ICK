@@ -12,7 +12,6 @@ public class Anime {
     private int episodes;
     private String status;
     private String genre;
-    private double rating;
 
     @ManyToMany(mappedBy = "favoriteAnime")
     private List<User> users; // Lista użytkowników, którzy dodali anime do ulubionych
@@ -56,14 +55,6 @@ public class Anime {
 
     public void setGenre(String genre) {
         this.genre = genre;
-    }
-
-    public double getRating() {
-        return rating;
-    }
-
-    public void setRating(double rating) {
-        this.rating = rating;
     }
 
     public List<User> getUsers() {

@@ -1,0 +1,34 @@
+<div class="col-lg-8 mx-auto p-4 py-md-5">
+  <main>
+    <h3 class="text-body-emphasis text-center">Lista anime</h3>
+    <p>Filtry:</p>
+    <div class="mb-3 col-3 form-floating">
+      <input type="number" min="1" max="10" name="rating" [(ngModel)]="ratingFilter" (input)="filterAnimeByRating(ratingFilter)" class="form-control" id="rating">
+      <label for="rating">Ocena</label>
+    </div>
+    <table class="table">
+      <thead>
+      <tr>
+        <th scope="col">Tytuł</th>
+        <th scope="col">Liczba odcinków</th>
+        <th scope="col">Status</th>
+        <th scope="col">Gatunek</th>
+        <th scope="col">Ocena</th>
+        <th scope="col">Wszystkie recenzje</th>
+        <th scope="col">Dodaj nową recenzję</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let anime of animes">
+        <td>{{ anime.title }}</td>
+        <td>{{ anime.episodes }}</td>
+        <td>{{ anime.status }}</td>
+        <td>{{ anime.genre }}</td>
+        <td>{{ ratings.get(anime.id) ?? 'brak recenzji' }}</td>
+        <td><a (click)="navigateToReviews(anime.id)">Link do recenzji</a></td>
+        <td><a (click)="navigateToAddNewReview(anime.id)">Nowa recenzja</a></td>
+      </tr>
+      </tbody>
+    </table>
+  </main>
+</div>
