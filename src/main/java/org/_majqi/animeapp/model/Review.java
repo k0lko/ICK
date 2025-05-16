@@ -1,13 +1,15 @@
 package org._majqi.animeapp.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 @Entity
 public class Review {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JsonProperty("mal_id")
     private Long id;
-    private String content;
-    private double rating;
+    private String review;
+    private int score;
 
     @ManyToOne
     @JoinColumn(name = "anime_id")
@@ -21,20 +23,20 @@ public class Review {
         this.id = id;
     }
 
-    public String getContent() {
-        return content;
+    public String getReview() {
+        return review;
     }
 
-    public void setContent(String content) {
-        this.content = content;
+    public void setReview(String review) {
+        this.review = review;
     }
 
-    public double getRating() {
-        return rating;
+    public int getScore() {
+        return score;
     }
 
-    public void setRating(double rating) {
-        this.rating = rating;
+    public void setScore(int score) {
+        this.score = score;
     }
 
     public Anime getAnime() {

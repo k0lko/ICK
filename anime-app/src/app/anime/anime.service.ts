@@ -9,8 +9,12 @@ export class AnimeService {
 
   constructor(private http: HttpClient) {}
 
-  getAnimeList(): Observable<any> {
-    return this.http.get('/api/anime');
+  getPaginatedAnimeList(params: any): Observable<any> {
+    return this.http.get<any>('/api/anime/search', { params });
+  }
+
+  getAnimeByTitle(title: string | null, params: any): Observable<any> {
+    return this.http.get<any>(`api/anime/search/${title}`, { params })
   }
 
   filterAnimeByRating(rating: number): Observable<any> {

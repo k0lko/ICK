@@ -8,6 +8,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface AnimeRepository extends JpaRepository<Anime, Long> {
-    List<Anime> findByGenre(String genre);
+//    List<Anime> findByGenre(String genre);
     List<Anime> findByTitleContainingIgnoreCase(String title);
 }

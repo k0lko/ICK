@@ -1,9 +1,11 @@
-<div class="col-lg-8 mx-auto p-4 py-md-5">
-  <main>
-    <h3 class="text-body-emphasis text-center">Lista recenzji</h3>
-    <div *ngFor="let review of reviews">
-      <p>{{ review.content }}</p>
-      <span>{{ review.rating }}</span>
+<div class="col-lg-10 mx-auto p-4 py-md-5">
+  <main class="row">
+    <h3 class="text-body-emphasis text-center mb-4">Lista recenzji</h3>
+    <div class="col-lg-5 p-4 border mx-auto rounded shadow mb-5" *ngFor="let review of reviews">
+      <label for="content">Treść recenzji:</label>
+      <p id="content" class="mt-2 mx-3 fw-bold">{{ review.content }}</p>
+      <label for="rating">Ocena:</label>
+      <p id="rating" class="mt-2 mx-3 fw-bold">{{ review.rating }}</p>
     </div>
   </main>
 </div>

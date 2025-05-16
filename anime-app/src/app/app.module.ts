@@ -6,10 +6,11 @@ import { AppComponent } from './app.component';
 import { AnimeComponent } from './anime/anime.component';
 import {provideHttpClient} from '@angular/common/http';
 import {NgFor} from '@angular/common';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { ReviewComponent } from './review/review.component';
 import { NavComponent } from './nav/nav.component';
 import { ReviewAddComponent } from './review/review-add.component';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,9 @@ import { ReviewAddComponent } from './review/review-add.component';
     BrowserModule,
     AppRoutingModule,
     NgFor,
-    FormsModule
+    FormsModule,
+    NgxPaginationModule,
+    ReactiveFormsModule
   ],
   providers: [provideHttpClient()],
   bootstrap: [AppComponent]
