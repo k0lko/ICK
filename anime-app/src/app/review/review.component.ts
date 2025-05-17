@@ -9,7 +9,7 @@ import {ActivatedRoute} from '@angular/router';
   styleUrl: './review.component.css'
 })
 export class ReviewComponent implements OnInit {
-  reviews: any;
+  response: any;
 
   constructor(
     private reviewService: ReviewService,
@@ -19,7 +19,10 @@ export class ReviewComponent implements OnInit {
   ngOnInit(): void {
     const animeId = this.route.snapshot.paramMap.get('animeId');
     this.reviewService.getReviews(animeId).subscribe({
-      next: (reviews) => this.reviews = reviews,
+      next: (reviews) => {
+        const { pagination, data } = reviews;
+        this.response = data;
+      },
       error: (err) => console.log(err)
     })
   }
