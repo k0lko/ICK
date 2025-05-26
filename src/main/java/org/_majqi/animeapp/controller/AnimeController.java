@@ -1,6 +1,7 @@
 package org._majqi.animeapp.controller;
 
 import org._majqi.animeapp.dto.AnimeApiResponseDto;
+import org._majqi.animeapp.dto.GenreDto;
 import org._majqi.animeapp.model.Anime;
 import org._majqi.animeapp.service.AnimeService;
 import org._majqi.animeapp.service.ReviewService;
@@ -34,11 +35,6 @@ class AnimeController {
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-//    @GetMapping("/genre/{genre}")
-//    public List<Anime> getAnimeByGenre(@PathVariable String genre) {
-//        return animeService.getAnimeByGenre(genre);
-//    }
-
     @PostMapping
     public Anime addAnime(@RequestBody Anime anime) {
         return animeService.addAnime(anime);
@@ -50,42 +46,39 @@ class AnimeController {
         return ResponseEntity.noContent().build();
     }
 
-    @GetMapping("/search/{title}")
-    public ResponseEntity<Map<String, Object>> searchAnimeByTitle(
-            @PathVariable String title,
-            @RequestParam int page,
-            @RequestParam int size
-    ) {
-        try {
-            var animeApiResponse = animeService.fetchAnimeFromAPI(page, size, title);
-            return getResponseEntity(animeApiResponse);
-        } catch (Exception e) {
-            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
+//    @GetMapping("/search/{title}")
+//    public ResponseEntity<Map<String, Object>> searchAnimeByTitle(
+//            @PathVariable String title,
+//            @RequestParam int page,
+//            @RequestParam int size
+//    ) {
+//        try {
+//            var animeApiResponse = animeService.fetchAnimeFromAPI(page, size, title);
+//            return getResponseEntity(animeApiResponse);
+//        } catch (Exception e) {
+//            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+//        }
+//    }
 
     @GetMapping("/search")
     public ResponseEntity<Map<String, Object>> searchAnime(
             @RequestParam int page,
-            @RequestParam int size
+            @RequestParam int size,
+            @RequestParam(required = false) String title,
+            @RequestParam(required = false) List<String> genresIds
     ) {
         try {
-            var animeApiResponse = animeService.fetchPaginatedAnimeFromAPI(page, size);
+            var animeApiResponse = animeService.fetchPaginatedAnimeFromAPI(page, size, title, genresIds);
             return getResponseEntity(animeApiResponse);
         } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
-//    @GetMapping("/{id}/average-rating")
-//    public Object getAverageRating(@PathVariable Long id) {
-//        var averageRatingOpt = reviewService.getAnimeAverageRating(id);
-//        if (averageRatingOpt.isPresent()) {
-//            return Math.round(averageRatingOpt.getAsDouble() * 100.0) / 100.0;
-//        } else {
-//            return null;
-//        }
-//    }
+    @GetMapping("/genres")
+    public ResponseEntity<GenreDto> getAnimesGenres() {
+        return new ResponseEntity<>(animeService.fetchAnimesGenres(), HttpStatus.OK);
+    }
 
     private ResponseEntity<Map<String, Object>> getResponseEntity(AnimeApiResponseDto animeApiResponse) {
         var pagination = animeApiResponse.getPagination();

@@ -5,3 +5,11 @@ body {
 .navbar {
   margin-bottom: 20px;
 }
+
+.text-right {
+  text-align: right;
+}
+
+.flex-space-between {
+  justify-content: space-between;
+}

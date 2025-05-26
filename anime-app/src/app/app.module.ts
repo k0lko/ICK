@@ -11,6 +11,7 @@ import { ReviewComponent } from './review/review.component';
 import { NavComponent } from './nav/nav.component';
 import { ReviewAddComponent } from './review/review-add.component';
 import {NgxPaginationModule} from 'ngx-pagination';
+import { FavouritesComponent } from './favourites/favourites.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import {NgxPaginationModule} from 'ngx-pagination';
     AnimeComponent,
     ReviewComponent,
     NavComponent,
-    ReviewAddComponent
+    ReviewAddComponent,
+    FavouritesComponent
   ],
   imports: [
     BrowserModule,

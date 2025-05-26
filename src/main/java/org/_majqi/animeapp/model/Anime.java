@@ -2,6 +2,8 @@ package org._majqi.animeapp.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
+import org._majqi.animeapp.dto.GenreDto;
+
 import java.util.List;
 
 @Entity

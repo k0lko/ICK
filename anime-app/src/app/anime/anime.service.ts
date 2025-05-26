@@ -13,9 +13,17 @@ export class AnimeService {
     return this.http.get<any>('/api/anime/search', { params });
   }
 
-  getAnimeByTitle(title: string | null, params: any): Observable<any> {
-    return this.http.get<any>(`api/anime/search/${title}`, { params })
+  // getAnimeByTitle(title: string | null, params: any): Observable<any> {
+  //   return this.http.get<any>(`api/anime/search/${title}`, { params });
+  // }
+
+  getAnimeGenres(): Observable<any> {
+    return this.http.get<any>('/api/anime/genres');
   }
+
+  // getAnimeByGenres(): Observable<any> {
+  //   return this.http.get<>('api/anime/search/');
+  // }
 
   filterAnimeByRating(rating: number): Observable<any> {
     const params = new HttpParams().set('minRating', rating);
